@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Build Table of Content dynamicly</title>
+    </head>
+
+    <body>
+
+        <nav role='navigation' id="toc"></nav>
+
+        <article id="page_content">
+            <h1>Build Table of Contents dynamically in pure JS</h1>
+            <h2>With some stuffs !</h2>
+            <p>And foo bar</p>
+            <h2>Test 2</h2>
+            <h2>Test 2.1</h2>
+            <h2>Test 2.2</h2>   
+        </article>
+
+
+        <script>
+
+        var el = document.querySelectorAll("#page_content h1, #page_content h2, #page_content h3, #page_content h4, #page_content h5, #page_content h6");
+            var sTOC = "";
+        for (var i = 0; i < el.length; i++) {
+            var sAnchorText = el[i].innerText.replace(/\s\s+/g, ' ').replace(/\s/g, '_').replace(/[^0-9a-z\u00C0-\u017F_]/gi, '').replace(/__+/g, '_');
+            el[i].setAttribute('id',sAnchorText);
+            sTOC += '<a href="#'+ sAnchorText +'">'+ el[i].innerText +'</a><br/>';
+        }
+        document.getElementById('toc').innerHTML = sTOC;
+
+        </script>
+
+    </body>
+
+</html>
