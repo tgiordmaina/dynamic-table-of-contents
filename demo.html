@@ -38,9 +38,9 @@
         var el = document.querySelectorAll("#page_content h1, #page_content h2, #page_content h3, #page_content h4, #page_content h5, #page_content h6");
             var sTOC = "";
         for (var i = 0; i < el.length; i++) {
-            var sAnchorText = el[i].innerText.replace(/\s\s+/g, ' ').replace(/\s/g, '_').replace(/[^0-9a-z\u00C0-\u017F_]/gi, '').replace(/__+/g, '_');
+            var sAnchorText = el[i].textContent.replace(/\s\s+/g, ' ').replace(/\s/g, '_').replace(/[^0-9a-z\u00C0-\u017F_]/gi, '').replace(/__+/g, '_');
             el[i].setAttribute('id',sAnchorText);
-            sTOC += '<a href="#'+ sAnchorText +'">'+ el[i].innerText +'</a><br/>';
+            sTOC += '<a href="#'+ sAnchorText +'">'+ el[i].textContent +'</a><br/>';
         }
         document.getElementById('toc').innerHTML = sTOC;
 
